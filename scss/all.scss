@@ -51,6 +51,9 @@ ul {
         }
 
         .btn-add-task {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             background: $text-color-dark;
             color:white;
             border: none;
