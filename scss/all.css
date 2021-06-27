@@ -144,6 +144,7 @@ ul {
 .main .input-container .btn-add-task {
   background: #333333;
   color: white;
+  border: none;
   border-radius: 10px;
   width: 40px;
   height: 40px;
