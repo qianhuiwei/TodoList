@@ -175,7 +175,6 @@ ul {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  border-bottom: 2px solid #EFEFEF;
 }
 
 .main .task-container .filter button {
@@ -184,6 +183,7 @@ ul {
   border: none;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  border-bottom: 2px solid #EFEFEF;
   color: #9F9A91;
   font-size: 14px;
   padding: 16px;

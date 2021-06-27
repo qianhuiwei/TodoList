@@ -73,7 +73,6 @@ ul {
         .filter {
             display: flex;
             justify-content: space-between;
-            border-bottom: 2px solid #EFEFEF;
 
             button {
                 width: 33.33%;
@@ -81,6 +80,7 @@ ul {
                 border: none;
                 border-top-left-radius: $border-radius;
                 border-top-right-radius: $border-radius;
+                border-bottom: 2px solid #EFEFEF;
                 color: $text-color-light;
                 font-size: $font-size-sm;
                 padding: 16px;
