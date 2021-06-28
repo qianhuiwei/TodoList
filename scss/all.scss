@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@700&display=swap');
 @import "reset";
 @import "variable";
 
@@ -21,7 +22,6 @@ ul {
     background-image: linear-gradient(174deg, $color-primary 2%, $color-primary 46%, #FFFFFF 46%, #FFFFFF 100%, #E8E8E8 100%);
     
     h1{
-        font-family: BalooTamma2-Bold;
         font-size: 48px;
         color: $text-color-dark;
         letter-spacing: 8px;

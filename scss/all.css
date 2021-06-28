@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@700&display=swap");
 /* 
 	 ====================================
 		Reset CSS
@@ -92,7 +93,6 @@ ul {
 }
 
 .main h1 {
-  font-family: BalooTamma2-Bold;
   font-size: 48px;
   color: #333333;
   letter-spacing: 8px;
