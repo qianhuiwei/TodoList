@@ -247,6 +247,7 @@ button {
 }
 
 .main .task-container .task-list .list-item .list-item-checkbox .list-item-content-checked {
+  width: 392px;
   text-decoration: line-through;
   color: #9F9A91;
   border-bottom: 1px solid #EFEFEF;
