@@ -78,10 +78,8 @@ body {
   letter-spacing: 0.7px;
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+button {
+  cursor: pointer;
 }
 
 .container {
@@ -114,6 +112,7 @@ ul {
 }
 
 .main .input-container .input-field {
+  font-size: 16px;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -259,6 +258,7 @@ ul {
 .main .task-container .task-list .list-item .btn-cancel {
   height: 16px;
   opacity: 0;
+  cursor: pointer;
 }
 
 .main .task-container .tools {

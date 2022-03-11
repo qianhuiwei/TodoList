@@ -14,108 +14,88 @@ const btnCancel = document.querySelector(".btn-cancel");
 const btnClear = document.querySelector(".btn-clear");
 
 /* add event listeners */
-input.addEventListener("keypress", function(e){
-    addTaskEnter(e);
+input.addEventListener("keypress", (e) => {
+    if (e.key === 'Enter') {
+        addTask();
+    }
 });
 
-btnAddTask.addEventListener("click", function(e){
-    addTask();
-});
+btnAddTask.addEventListener("click", addTask);
 
-tabAll.addEventListener("click", function (e) {
+tabAll.addEventListener("click", function () {
     tabAll.classList.add("active");
     tabTodo.classList.remove("active");
     tabDone.classList.remove("active");
     showAllTasks();
 });
 
-tabTodo.addEventListener("click", function (e) {
+tabTodo.addEventListener("click", function () {
     tabAll.classList.remove("active");
     tabTodo.classList.add("active");
     tabDone.classList.remove("active");
     showTodo();
 });
 
-tabDone.addEventListener("click", function (e) {
+tabDone.addEventListener("click", function () {
     tabAll.classList.remove("active");
     tabTodo.classList.remove("active");
     tabDone.classList.add("active");
     showDone();
 });
 
-taskList.addEventListener("click", function (e) {
-    let target = e.target.getAttribute("class");
-    if(target === "btn-cancel") {
+tasks.addEventListener("click", function (e) {
+    const target = e.target.getAttribute("class");
+    if (target === "btn-cancel") {
         deleteListItem(e);
     }
 
-    if(target === "checkbox" || target === "check-mark") {
+    if (target === "checkbox" || target === "check-mark") {
         changeStatus(e);
     }
 });
 
-btnClear.addEventListener("click", function (e) {
-    clearDone();
-});
+btnClear.addEventListener("click", clearDone);
 
 
 /* Helper functions */
 
-// function that adds a task when user click on the add button
+// function that adds a task when user click on the add button or hit enter key
 function addTask() {
     if (input.value === "") {
         alert("Please enter a task");
         return;
     }
-    let obj = {};
-    obj.content = input.value;
-    obj.status = "todo";
+    const obj = {
+        content: input.value.trim(),
+        status: false,
+    };
     data.push(obj);
     showAllTasks();
+    tabAll.classList.add("active");
+    tabTodo.classList.remove("active");
+    tabDone.classList.remove("active");
     input.value = "";
-}
-
-// function that adds a task when user hit enter
-function addTaskEnter(e) {
-    if (e.key === 'Enter') {
-        if (input.value === "") {
-            alert("Please enter a task");
-            return;
-        }
-        let obj = {};
-        obj.content = input.value;
-        obj.status = "todo";
-        data.push(obj);
-        showAllTasks();
-        input.value = "";
-      }
-}
-
-// function that gets the total number of how many to-do tasks
-function getTodoNum() {
-    let count = 0;
-    data.forEach(function(item){
-        if (item.status === "todo") {
-            count++;
-        }
-    })
-    return count;
 }
 
 // function that shows the total number of how many todo tasks
 function showTodoNum() {
-    let num = getTodoNum();
-    todoNum.textContent = `${num} 個待完成項目`;
+    let count = 0;
+    data.forEach(function (item) {
+        if (item.status === false) {
+            count++;
+        }
+    })
+    todoNum.textContent = `${count} 個待完成項目`;
 }
 
 // function that shows all tasks (including todo and done)
-function showAllTasks() {
+function showAllTasks(e) {
     tasks.innerHTML = "";
     let listContent = "";
     data.forEach(function (item, index) {
-        if (item.status === "todo") {
+        if (item.status === false) {
             listContent += `<li class="list-item"><div class="list-item-checkbox"><input type="checkbox" class="checkbox" data-id=${index}><p class="list-item-content">${item.content}</p></div><img class="btn-cancel" data-id=${index} src="https://hexschool.github.io/js-todo/assets/cancel.jpg" alt="btn-cancel"></li>`;
-        } else if (item.status === "done") {
+        } else if (item.status === true) {
             listContent += `<li class="list-item"><div class="list-item-checkbox"><span class="check-mark" data-id=${index}>&#10004;</span><p class="list-item-content-checked">${item.content}</p></div><img class="btn-cancel" data-id=${index} src="https://hexschool.github.io/js-todo/assets/cancel.jpg" alt="btn-cancel"></li>`;
         }
     });
@@ -128,7 +108,7 @@ function showTodo() {
     tasks.innerHTML = "";
     let listContent = "";
     data.forEach(function (item, index) {
-        if (item.status === "todo") {
+        if (item.status === false) {
             listContent += `<li class="list-item"><div class="list-item-checkbox"><input type="checkbox" class="checkbox" data-id=${index}><p class="list-item-content">${item.content}</p></div><img class="btn-cancel" data-id=${index} src="https://hexschool.github.io/js-todo/assets/cancel.jpg" alt="btn-cancel"></li>`;
         }
     });
@@ -141,7 +121,7 @@ function showDone() {
     tasks.innerHTML = "";
     let listContent = "";
     data.forEach(function (item, index) {
-        if (item.status === "done") {
+        if (item.status === true) {
             listContent += `<li class="list-item"><div class="list-item-checkbox"><span class="check-mark" data-id=${index}>&#10004;</span><p class="list-item-content-checked">${item.content}</p></div><img class="btn-cancel" data-id=${index} src="https://hexschool.github.io/js-todo/assets/cancel.jpg" alt="btn-cancel"></li>`;
         }
     });
@@ -162,19 +142,19 @@ function showActiveTab() {
 
 // function that deletes a task by its id
 function deleteListItem(e) {
-    let deleteId = e.target.getAttribute("data-id");
+    const deleteId = e.target.getAttribute("data-id");
     data.splice(deleteId, 1);
     showActiveTab();
 }
 
 // function that changes task's status (todo -> done / done -> todo)
 function changeStatus(e) {
-    let index = e.target.getAttribute("data-id");
-    if (data[index].status === "todo") {
-        data[index].status = "done";
+    const index = e.target.getAttribute("data-id");
+    if (data[index].status === false) {
+        data[index].status = true;
         showActiveTab();
     } else {
-        data[index].status = "todo";
+        data[index].status = false;
         showActiveTab();
     }
 }
@@ -182,8 +162,8 @@ function changeStatus(e) {
 // function that deletes all done tasks
 function clearDone() {
     let newData = [];
-    data.forEach(function(item){
-        if (item.status === "todo"){
+    data.forEach(function (item) {
+        if (item.status === false) {
             newData.push(item);
         }
     });
