@@ -76,6 +76,8 @@ img {
 body {
   font-family: "Baloo Tamma 2", "Noto Sans TC", sans-serif;
   letter-spacing: 0.7px;
+  background-image: linear-gradient(174deg, #FFD370 2%, #FFD370 46%, #FFFFFF 46%, #FFFFFF 100%, #E8E8E8 100%);
+  background-repeat: no-repeat;
 }
 
 button {
@@ -87,11 +89,7 @@ button {
   margin: 0 auto;
 }
 
-.main {
-  background-image: linear-gradient(174deg, #FFD370 2%, #FFD370 46%, #FFFFFF 46%, #FFFFFF 100%, #E8E8E8 100%);
-}
-
-.main h1 {
+h1 {
   font-size: 48px;
   color: #333333;
   letter-spacing: 8px;
@@ -100,7 +98,7 @@ button {
   padding-bottom: 24px;
 }
 
-.main .input-container {
+.input-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -111,7 +109,7 @@ button {
           box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
 }
 
-.main .input-container .input-field {
+.input-container .input-field {
   font-size: 16px;
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -121,27 +119,27 @@ button {
   padding-right: 24px;
 }
 
-.main .input-container .input-field:focus {
+.input-container .input-field:focus {
   outline: none;
 }
 
-.main .input-container .input-field::-webkit-input-placeholder {
+.input-container .input-field::-webkit-input-placeholder {
   color: #9F9A91;
 }
 
-.main .input-container .input-field:-ms-input-placeholder {
+.input-container .input-field:-ms-input-placeholder {
   color: #9F9A91;
 }
 
-.main .input-container .input-field::-ms-input-placeholder {
+.input-container .input-field::-ms-input-placeholder {
   color: #9F9A91;
 }
 
-.main .input-container .input-field::placeholder {
+.input-container .input-field::placeholder {
   color: #9F9A91;
 }
 
-.main .input-container .btn-add-task {
+.input-container .btn-add-task {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -160,7 +158,7 @@ button {
   font-size: 32px;
 }
 
-.main .task-container {
+.task-container {
   border-radius: 10px;
   background: white;
   -webkit-box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.15);
@@ -168,7 +166,7 @@ button {
   margin-top: 8px;
 }
 
-.main .task-container .filter {
+.task-container .filter {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -177,7 +175,7 @@ button {
           justify-content: space-between;
 }
 
-.main .task-container .filter button {
+.task-container .filter button {
   width: 33.33%;
   background: white;
   border: none;
@@ -189,25 +187,27 @@ button {
   padding: 16px;
 }
 
-.main .task-container .filter button:hover {
+.task-container .filter button:hover {
   color: #FFD370;
 }
 
-.main .task-container .filter .active {
+.task-container .filter .active {
   color: #333333;
   font-weight: bold;
   border-bottom: 2px solid #333333;
 }
 
-.main .task-container .task-list {
+.task-container .task-list {
   min-height: 300px;
+  max-height: 500px;
+  overflow: scroll;
   padding-top: 24px;
   padding-bottom: 24px;
   padding-left: 24px;
   padding-right: 16px;
 }
 
-.main .task-container .task-list .list-item {
+.task-container .task-list .list-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -219,11 +219,11 @@ button {
           align-items: center;
 }
 
-.main .task-container .task-list .list-item:hover .btn-cancel {
+.task-container .task-list .list-item:hover .btn-cancel {
   opacity: 1;
 }
 
-.main .task-container .task-list .list-item .list-item-checkbox {
+.task-container .task-list .list-item .list-item-checkbox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -232,7 +232,7 @@ button {
           align-items: center;
 }
 
-.main .task-container .task-list .list-item .list-item-checkbox .list-item-content {
+.task-container .task-list .list-item .list-item-checkbox .list-item-content {
   width: 392px;
   border-bottom: 1px solid #EFEFEF;
   padding-top: 16px;
@@ -240,13 +240,13 @@ button {
   margin-left: 16px;
 }
 
-.main .task-container .task-list .list-item .list-item-checkbox .check-mark {
+.task-container .task-list .list-item .list-item-checkbox .check-mark {
   color: #FFD370;
   cursor: pointer;
   margin-left: 2px;
 }
 
-.main .task-container .task-list .list-item .list-item-checkbox .list-item-content-checked {
+.task-container .task-list .list-item .list-item-checkbox .list-item-content-checked {
   width: 392px;
   text-decoration: line-through;
   color: #9F9A91;
@@ -256,32 +256,30 @@ button {
   margin-left: 16px;
 }
 
-.main .task-container .task-list .list-item .btn-cancel {
+.task-container .task-list .list-item .btn-cancel {
   height: 16px;
   opacity: 0;
   cursor: pointer;
 }
 
-.main .task-container .tools {
+.task-container .tools {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-bottom: 32px;
+  padding: 32px 24px;
   font-size: 14px;
 }
 
-.main .task-container .tools .btn-clear {
+.task-container .tools .btn-clear {
   border: none;
   color: #9F9A91;
   background: white;
 }
 
-.main .task-container .tools .btn-clear:hover {
+.task-container .tools .btn-clear:hover {
   color: #333333;
 }
 /*# sourceMappingURL=all.css.map */

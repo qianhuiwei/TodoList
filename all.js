@@ -67,7 +67,7 @@ function addTask() {
     }
     const obj = {
         content: input.value.trim(),
-        status: false,
+        status: false, // default a new task to be not done
     };
     data.push(obj);
     showAllTasks();
@@ -81,7 +81,7 @@ function addTask() {
 function showTodoNum() {
     let count = 0;
     data.forEach(function (item) {
-        if (item.status === false) {
+        if (!item.status) {
             count++;
         }
     })
@@ -93,9 +93,9 @@ function showAllTasks(e) {
     tasks.innerHTML = "";
     let listContent = "";
     data.forEach(function (item, index) {
-        if (item.status === false) {
+        if (!item.status) {
             listContent += `<li class="list-item"><div class="list-item-checkbox"><input type="checkbox" class="checkbox" data-id=${index}><p class="list-item-content">${item.content}</p></div><img class="btn-cancel" data-id=${index} src="https://hexschool.github.io/js-todo/assets/cancel.jpg" alt="btn-cancel"></li>`;
-        } else if (item.status === true) {
+        } else if (item.status) {
             listContent += `<li class="list-item"><div class="list-item-checkbox"><span class="check-mark" data-id=${index}>&#10004;</span><p class="list-item-content-checked">${item.content}</p></div><img class="btn-cancel" data-id=${index} src="https://hexschool.github.io/js-todo/assets/cancel.jpg" alt="btn-cancel"></li>`;
         }
     });
@@ -108,7 +108,7 @@ function showTodo() {
     tasks.innerHTML = "";
     let listContent = "";
     data.forEach(function (item, index) {
-        if (item.status === false) {
+        if (!item.status) {
             listContent += `<li class="list-item"><div class="list-item-checkbox"><input type="checkbox" class="checkbox" data-id=${index}><p class="list-item-content">${item.content}</p></div><img class="btn-cancel" data-id=${index} src="https://hexschool.github.io/js-todo/assets/cancel.jpg" alt="btn-cancel"></li>`;
         }
     });
@@ -121,7 +121,7 @@ function showDone() {
     tasks.innerHTML = "";
     let listContent = "";
     data.forEach(function (item, index) {
-        if (item.status === true) {
+        if (item.status) {
             listContent += `<li class="list-item"><div class="list-item-checkbox"><span class="check-mark" data-id=${index}>&#10004;</span><p class="list-item-content-checked">${item.content}</p></div><img class="btn-cancel" data-id=${index} src="https://hexschool.github.io/js-todo/assets/cancel.jpg" alt="btn-cancel"></li>`;
         }
     });
@@ -150,7 +150,7 @@ function deleteListItem(e) {
 // function that changes task's status (todo -> done / done -> todo)
 function changeStatus(e) {
     const index = e.target.getAttribute("data-id");
-    if (data[index].status === false) {
+    if (!data[index].status) {
         data[index].status = true;
         showActiveTab();
     } else {
@@ -163,7 +163,7 @@ function changeStatus(e) {
 function clearDone() {
     let newData = [];
     data.forEach(function (item) {
-        if (item.status === false) {
+        if (!item.status) {
             newData.push(item);
         }
     });

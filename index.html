@@ -10,37 +10,35 @@
 </head>
 
 <body>
-    <div class="main">
-        <div class="container">
-            <h1>TODO LIST</h1>
-            <div class="input-container">
-                <input class="input-field" type="text" placeholder="新增待辦事項">
-                <button type="submit" class="btn-add-task">+</button>
+    <div class="container">
+        <h1>TODO LIST</h1>
+        <div class="input-container">
+            <input class="input-field" type="text" placeholder="新增待辦事項">
+            <button type="submit" class="btn-add-task">+</button>
+        </div>
+        <div class="task-container">
+            <div class="filter">
+                <button class="tab-all active">全部</button>
+                <button class="tab-todo">待完成</button>
+                <button class="tab-done">已完成</button>
             </div>
-            <div class="task-container">
-                <div class="filter">
-                    <button class="tab-all active">全部</button>
-                    <button class="tab-todo">待完成</button>
-                    <button class="tab-done">已完成</button>
-                </div>
-                <ul class="task-list">
-                    <li class="list-item">
-                        <div class="list-item-checkbox">
-                            <input type="checkbox" class="checkbox">
-                            <p class="list-item-content">
-                                task content
-                            </p>
-                        </div>
-                        <img class="btn-cancel" src="https://hexschool.github.io/js-todo/assets/cancel.jpg"
-                            alt="btn-cancel">
+            <ul class="task-list">
+                <li class="list-item">
+                    <div class="list-item-checkbox">
+                        <input type="checkbox" class="checkbox">
+                        <p class="list-item-content">
+                            task content
+                        </p>
+                    </div>
+                    <img class="btn-cancel" src="https://hexschool.github.io/js-todo/assets/cancel.jpg"
+                        alt="btn-cancel">
 
-                    </li>
+                </li>
 
-                </ul>
-                <div class="tools">
-                    <span class="todo-num">0 個待完成項目</span>
-                    <button class="btn-clear">清除已完成項目</button>
-                </div>
+            </ul>
+            <div class="tools">
+                <span class="todo-num">0 個待完成項目</span>
+                <button class="btn-clear">清除已完成項目</button>
             </div>
         </div>
     </div>

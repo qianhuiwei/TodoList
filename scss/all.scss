@@ -6,6 +6,8 @@
 body{
     font-family: "Baloo Tamma 2", "Noto Sans TC", sans-serif;
     letter-spacing: 0.7px;
+    background-image: linear-gradient(174deg, $color-primary 2%, $color-primary 46%, #FFFFFF 46%, #FFFFFF 100%, #E8E8E8 100%);
+    background-repeat: no-repeat;
 }
 
 button {
@@ -17,159 +19,154 @@ button {
     margin: 0 auto;
 }
 
-.main{
-    background-image: linear-gradient(174deg, $color-primary 2%, $color-primary 46%, #FFFFFF 46%, #FFFFFF 100%, #E8E8E8 100%);
-    
-    h1{
-        font-size: 48px;
-        color: $text-color-dark;
-        letter-spacing: 8px;
-        text-align: center;
-        padding-top: 48px;
-        padding-bottom: 24px;
+h1{
+    font-size: 48px;
+    color: $text-color-dark;
+    letter-spacing: 8px;
+    text-align: center;
+    padding-top: 48px;
+    padding-bottom: 24px;
+}
+
+.input-container{
+    display: flex;
+    padding: 4px;
+    background: white;
+    border-radius: $border-radius;
+    box-shadow: 0 0 15px 0 rgba(0,0,0,0.15);
+
+    .input-field {
+        font-size: 16px;
+        flex: 1;
+        border: none;
+        padding-left: 24px;
+        padding-right: 24px;
+        &:focus{
+            outline: none;
+        }
+        &::placeholder {
+            color: $text-color-light;
+        }
     }
 
-    .input-container{
+    .btn-add-task {
         display: flex;
-        padding: 4px;
-        background: white;
+        justify-content: center;
+        align-items: center;
+        background: $text-color-dark;
+        color:white;
+        border: none;
         border-radius: $border-radius;
-        box-shadow: 0 0 15px 0 rgba(0,0,0,0.15);
+        width: 40px;
+        height: 40px;
+        font-size: 32px;
+    }
+}
 
-        .input-field {
-            font-size: 16px;
-            flex: 1;
+.task-container{
+    border-radius: $border-radius;
+    background: white;
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.15);
+    margin-top: 8px;
+
+    .filter {
+        display: flex;
+        justify-content: space-between;
+
+        button {
+            width: 33.33%;
+            background: white;
             border: none;
-            padding-left: 24px;
-            padding-right: 24px;
-            &:focus{
-                outline: none;
-            }
-            &::placeholder {
-                color: $text-color-light;
+            border-top-left-radius: $border-radius;
+            border-top-right-radius: $border-radius;
+            border-bottom: 2px solid #EFEFEF;
+            color: $text-color-light;
+            font-size: $font-size-sm;
+            padding: 16px;
+
+            &:hover {
+                color:$color-primary;
             }
         }
 
-        .btn-add-task {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: $text-color-dark;
-            color:white;
-            border: none;
-            border-radius: $border-radius;
-            width: 40px;
-            height: 40px;
-            font-size: 32px;
+        .active {
+            color: $text-color-dark;
+            font-weight: bold;
+            border-bottom: 2px solid $text-color-dark;
         }
     }
 
-    .task-container{
-        border-radius: $border-radius;
-        background: white;
-        box-shadow: 0 5px 15px 0 rgba(0,0,0,0.15);
-        margin-top: 8px;
+    .task-list {
+        min-height: 300px;
+        max-height: 500px;
+        overflow: scroll;
+        padding-top: 24px;
+        padding-bottom: 24px;
+        padding-left: 24px;
+        padding-right: 16px;
 
-        .filter {
+        .list-item {
             display: flex;
             justify-content: space-between;
-
-            button {
-                width: 33.33%;
-                background: white;
-                border: none;
-                border-top-left-radius: $border-radius;
-                border-top-right-radius: $border-radius;
-                border-bottom: 2px solid #EFEFEF;
-                color: $text-color-light;
-                font-size: $font-size-sm;
-                padding: 16px;
-
-                &:hover {
-                    color:$color-primary;
-                }
-            }
-
-            .active {
-                color: $text-color-dark;
-                font-weight: bold;
-                border-bottom: 2px solid $text-color-dark;
-            }
-        }
-
-        .task-list {
-            min-height: 300px;
-            padding-top: 24px;
-            padding-bottom: 24px;
-            padding-left: 24px;
-            padding-right: 16px;
-
-            .list-item {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                &:hover {
-                    .btn-cancel {
-                        opacity: 1;
-                    }
-                }
-
-                .list-item-checkbox {
-                    display: flex;
-                    align-items: center;
-
-                    .list-item-content {
-                        width: 392px;
-                        border-bottom: 1px solid #EFEFEF;
-                        padding-top: 16px;
-                        padding-bottom: 16px;
-                        margin-left: 16px;
-                    }
-
-                    .check-mark {
-                        color: $color-primary;
-                        cursor: pointer;
-                        margin-left: 2px;
-                    }
-                    .list-item-content-checked {
-                        width: 392px;
-                        text-decoration: line-through;
-                        color:$text-color-light;
-                        border-bottom: 1px solid #EFEFEF;
-                        padding-top: 16px;
-                        padding-bottom: 16px;
-                        margin-left: 16px;
-                    } 
-                }
-
+            align-items: center;
+            &:hover {
                 .btn-cancel {
-                    height: 16px;
-                    opacity: 0;
+                    opacity: 1;
+                }
+            }
+
+            .list-item-checkbox {
+                display: flex;
+                align-items: center;
+
+                .list-item-content {
+                    width: 392px;
+                    border-bottom: 1px solid #EFEFEF;
+                    padding-top: 16px;
+                    padding-bottom: 16px;
+                    margin-left: 16px;
+                }
+
+                .check-mark {
+                    color: $color-primary;
                     cursor: pointer;
+                    margin-left: 2px;
                 }
+                .list-item-content-checked {
+                    width: 392px;
+                    text-decoration: line-through;
+                    color:$text-color-light;
+                    border-bottom: 1px solid #EFEFEF;
+                    padding-top: 16px;
+                    padding-bottom: 16px;
+                    margin-left: 16px;
+                } 
+            }
 
+            .btn-cancel {
+                height: 16px;
+                opacity: 0;
+                cursor: pointer;
+            }
+
+        }
+    }
+
+    .tools {
+        display: flex;
+        justify-content: space-between;
+        padding:32px 24px;
+        font-size: $font-size-sm;
+
+        .btn-clear {
+            border:none;
+            color:$text-color-light;
+            background: white;
+
+            &:hover {
+                color: $text-color-dark;
             }
         }
-
-        .tools {
-            display: flex;
-            justify-content: space-between;
-            padding-left: 24px;
-            padding-right: 24px;
-            padding-bottom: 32px;
-            font-size: $font-size-sm;
-
-            .btn-clear {
-                border:none;
-                color:$text-color-light;
-                background: white;
-
-                &:hover {
-                    color: $text-color-dark;
-                }
-            }
-        }
-
     }
 }
 
