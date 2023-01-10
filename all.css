@@ -1,0 +1,227 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
+/* 
+	 ====================================
+		Reset CSS
+	 ====================================
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 
+	 ====================================
+		Other useful reset rules
+	 ====================================
+*/
+/* apply border-box model to all elements */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+/* make all images responsive) */
+img {
+  max-width: 100%; /* will adjust sizes with its container */
+  height: auto;
+}
+
+body {
+  font-family: "Baloo Tamma 2", "Noto Sans TC", sans-serif;
+  letter-spacing: 0.7px;
+  background-image: linear-gradient(174deg, #FFD370 0 46%, #FFFFFF 46% 100%);
+  background-repeat: no-repeat;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 48px;
+  color: #333333;
+  letter-spacing: 8px;
+  text-align: center;
+  padding-top: 48px;
+  padding-bottom: 24px;
+}
+
+.input-container {
+  display: flex;
+  padding: 4px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+}
+.input-container .input-field {
+  font-size: 16px;
+  flex: 1;
+  border: none;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.input-container .input-field:focus {
+  outline: none;
+}
+.input-container .input-field::-moz-placeholder {
+  color: #9F9A91;
+}
+.input-container .input-field:-ms-input-placeholder {
+  color: #9F9A91;
+}
+.input-container .input-field::placeholder {
+  color: #9F9A91;
+}
+.input-container .btn-add-task {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #333333;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  font-size: 32px;
+}
+
+.task-container {
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.15);
+  margin-top: 8px;
+}
+.task-container .filter {
+  display: flex;
+  justify-content: space-between;
+}
+.task-container .filter button {
+  width: 33.33%;
+  background: white;
+  border: none;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom: 2px solid #EFEFEF;
+  color: #9F9A91;
+  font-size: 14px;
+  padding: 16px;
+}
+.task-container .filter button:hover {
+  color: #FFD370;
+}
+.task-container .filter .active {
+  color: #333333;
+  font-weight: bold;
+  border-bottom: 2px solid #333333;
+}
+.task-container .task-list {
+  min-height: 300px;
+  max-height: 500px;
+  overflow: scroll;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-left: 24px;
+  padding-right: 16px;
+}
+.task-container .task-list .list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.task-container .task-list .list-item:hover .btn-cancel {
+  opacity: 1;
+}
+.task-container .task-list .list-item .list-item-checkbox {
+  display: flex;
+  align-items: center;
+}
+.task-container .task-list .list-item .list-item-checkbox .list-item-content {
+  width: 392px;
+  border-bottom: 1px solid #EFEFEF;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  margin-left: 16px;
+}
+.task-container .task-list .list-item .list-item-checkbox .check-mark {
+  color: #FFD370;
+  cursor: pointer;
+  margin-left: 2px;
+}
+.task-container .task-list .list-item .list-item-checkbox .list-item-content-checked {
+  width: 392px;
+  text-decoration: line-through;
+  color: #9F9A91;
+  border-bottom: 1px solid #EFEFEF;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  margin-left: 16px;
+}
+.task-container .task-list .list-item .btn-cancel {
+  height: 16px;
+  opacity: 0;
+  cursor: pointer;
+}
+.task-container .tools {
+  display: flex;
+  justify-content: space-between;
+  padding: 32px 24px;
+  font-size: 14px;
+}
+.task-container .tools .btn-clear {
+  border: none;
+  color: #9F9A91;
+  background: white;
+}
+.task-container .tools .btn-clear:hover {
+  color: #333333;
+}
